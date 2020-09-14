@@ -1,19 +1,51 @@
 package sist;
 
+/*
+ * 아래와 같이 출력을 해 보자.
+ * 
+ * 	*****
+ * 	*****
+ * 	*****
+ * 	*****
+ * 
+ *  *
+ *  **
+ *  ***
+ *  ****
+ *  *****
+ * 
+ *  *****
+ *  ****
+ *  ***
+ *  **
+ *  *
+ */
+
 public class Ex37 {
 
 	public static void main(String[] args) {
 
-		for(int i=1; i<10; i++) {	
-			if(i == 1) {
-				for(int n=2; n<10; n++) {
-				System.out.print("*** "+n+"단 ***\t");
-				}
-			System.out.println();
+		for(int i=1; i<=4; i++) {
+			for(int star=1; star<=5; star++) {
+				System.out.print("*");
 			}
-			for(int j=2; j<10; j++) {
-				//System.out.println(i+" * "+j+" = "+(i*j));
-				System.out.printf("%d * %d = %2d\t",j,i,(i*j));
+			System.out.println();
+		}
+		
+		System.out.println();
+		
+		for(int i=1; i<=5; i++) {
+			for(int j=1; j<=i; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		System.out.println();
+		
+		for(int i=5; i>=1; i--) {
+			for(int j=1; j<=i; j++) {
+				System.out.print("*");
 			}
 			System.out.println();
 		}
