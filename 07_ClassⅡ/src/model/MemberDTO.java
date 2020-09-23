@@ -3,7 +3,7 @@ package model;
 /*
  * ※※※※※※※※※※※※※※※※※※※※
  * 자바 빈(Java Bean)?
- * - DB에 접근하여 특정 컬럼(속성)에 갑을 저장하거나 저장된 값을 가져 오는 자바 클래스.
+ * - DB에 접근하여 특정 컬럼(속성)에 값을 저장하거나 저장된 값을 가져 오는 자바 클래스.
  * - Java Bean == DTO(Data Transfer Object) == VO(Value Object)
  * - 구성요소
  *   1. 멤버변수 - DB 컬럼명 : 접근지정자(private)
