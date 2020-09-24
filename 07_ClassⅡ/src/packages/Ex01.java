@@ -10,7 +10,7 @@ import model.MemberDTO;
  * - import 키워드 : 현재 패키지의 클래스에서 다른 패키지에 있는 
  *                 다른 클래스를 사용하고 싶은 경우 import 해야 한다.
  *                 (단, 동일한 패키지인 경우는 생략 가능)
- *   형식) import 패키지명.클래스명;
+ *   형식) import 패키지명.서브패키지명.클래스명;
  *   * 자동 import 단축 키 : ctrl + shift + o
  */
 
