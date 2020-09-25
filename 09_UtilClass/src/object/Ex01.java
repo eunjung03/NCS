@@ -30,7 +30,7 @@ public class Ex01 {		// extends Object 가 생략
 		}
 		
 		if(ex01.equals(ex02)) {
-			System.out.println("같다");	// 내용값이 같으므로
+			System.out.println("같다");	
 		} else {
 			System.out.println("아니다");
 		}
