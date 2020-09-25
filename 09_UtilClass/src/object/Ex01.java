@@ -36,6 +36,7 @@ public class Ex01 {		// extends Object 가 생략
 		}
 		System.out.println();
 
+		
 		String str1 = new String("홍길동");
 		String str2 = new String("홍길동");
 		
