@@ -17,7 +17,7 @@ public class ProductSearchData {
 		proTable[2][0] = "TV";
 		proTable[2][1] = "HDTV 150인치 최신모델";
 		
-	}	// 인자 생성자
+	}
 	
 	// 상품명을 매개변수로 넘겨 받아서 해당 상품 정보를 반환하는 메서드
 	String search(String productName) {
