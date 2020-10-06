@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class Ex21_Layout04 {
+public class Ex22_Layout04 {
 
 	public static void main(String[] args) {
 

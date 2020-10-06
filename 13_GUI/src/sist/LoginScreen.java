@@ -1,14 +1,13 @@
 package sist;
 
 import java.awt.*;
-
+import java.awt.event.*;
 import javax.swing.*;
 
-public class LoginScreen {
-
-	public static void main(String[] args) {
-
-		JFrame jf = new JFrame("제품관리 시스템");
+public class LoginScreen extends JFrame {
+	
+	public LoginScreen() {
+		super("제품관리 시스템");
 		
 		JPanel title = new JPanel();
 				
@@ -65,16 +64,39 @@ public class LoginScreen {
 		jp2.setLayout(new FlowLayout());
 		jp2.add(jp1);
 		
-		jf.setLayout(new BorderLayout());
-		jf.add(title, BorderLayout.NORTH);
-		jf.add(jp2, BorderLayout.CENTER);
+		setLayout(new BorderLayout());
+		add(title, BorderLayout.NORTH);
+		add(jp2, BorderLayout.CENTER);
 	
-		jf.setBounds(200, 200, 300, 250);
-		jf.setResizable(false); 	// 화면 크기 고정
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setVisible(true);
+		setBounds(200, 200, 300, 250);
+		setResizable(false); 	// 화면 크기 고정
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
 		
+		// 4. 이벤트 처리
+		join.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				new JoinScreen();
+				dispose();			// 현재 있는 윈도우 창을 없애줌.
+			}
+		});
 		
+		jlogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String idInfo = jtf1.getText();
+				String pwdInfo = jtf2.getText();
+				
+				String loginInfo = "아이디 : "+ idInfo + ", 비번 : "+pwdInfo;
+				
+				JOptionPane.showMessageDialog(jlogin, loginInfo);
+			}
+		});
 		
 	}
 

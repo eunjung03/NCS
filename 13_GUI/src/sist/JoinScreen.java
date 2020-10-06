@@ -1,111 +1,152 @@
 package sist;
 
 import java.awt.*;
-
+import java.awt.event.*;
 import javax.swing.*;
 
-public class JoinScreen {
+public class JoinScreen extends JFrame {
+	
+	public JoinScreen() {
+		super("회원관리 시스템");
 
-	public static void main(String[] args) {
+		// 1. 컴포넌트들을 만들어 보자.
+		JLabel title = new JLabel("회원가입", SwingConstants.CENTER);
 		
-		JFrame jf = new JFrame("제품관리 시스템");
+		title.setForeground(new Color(5, 0, 153));
+		title.setFont(new Font("휴먼편지체", Font.BOLD, 30));
 		
-		// 타이틀 이름
-		JPanel title = new JPanel();
-		JLabel join = new JLabel("회원가입");
-		join.setForeground(new Color(5, 0, 153));
-		join.setFont(new Font("휴먼편지체", Font.BOLD, 24));
+		JButton join = new JButton("회원가입");
+		JButton cancel = new JButton("취소");
 		
-		title.add(join);
+		JTextField id = new JTextField(10);
+		JTextField pwd = new JTextField(10);
+		JTextField name = new JTextField(10);
+		JTextField phone = new JTextField(10);
 		
-		JPanel jp = new JPanel(new GridLayout(6,2));
-		
-		// 고객, 관리자, 기타 라디오버튼 구현
-		JPanel jp1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JRadioButton jrb1 = new JRadioButton("고객");
-		JRadioButton jrb2 = new JRadioButton("관리자");
-		JRadioButton jrb3 = new JRadioButton("기타");
+		JRadioButton client = new JRadioButton("고객");
+		JRadioButton manager = new JRadioButton("관리자");
+		JRadioButton etc = new JRadioButton("기타");
 		
 		ButtonGroup bg = new ButtonGroup();
-		bg.add(jrb1); bg.add(jrb2); bg.add(jrb3);
+		bg.add(client); bg.add(manager); bg.add(etc);
 		
-		jp1.add(jrb1); jp1.add(jrb2); jp1.add(jrb3);
+		// radio panel
+		JPanel radioPanel = new JPanel();
+		radioPanel.setLayout(new FlowLayout());
+		radioPanel.add(client);
+		radioPanel.add(manager);
+		radioPanel.add(etc);
 		
-		// 아이디 
-		JPanel idPanel1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel jLabel1 = new JLabel("아이디 : ", JLabel.CENTER);
-		idPanel1.add(jLabel1);
+		// form panels
+		JPanel idPanel = new JPanel();
+		idPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		idPanel.add(new JLabel("아이디 : "));
+		idPanel.add(id);
 		
-		JPanel idPanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JTextField jtf1 = new JTextField(10);
-		idPanel2.add(jtf1);
+		JPanel pwdPanel = new JPanel();
+		pwdPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		pwdPanel.add(new JLabel("비밀번호 : "));
+		pwdPanel.add(pwd);
 		
-		jp.add(idPanel1); jp.add(idPanel2);
+		JPanel namePanel = new JPanel();
+		namePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		namePanel.add(new JLabel("이  름 : "));
+		namePanel.add(name);
 		
-		// 비밀번호
-		JPanel pwdPanel1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel jLabel2 = new JLabel("비밀번호 : ", JLabel.CENTER);
-		pwdPanel1.add(jLabel2);
+		JPanel phonePanel = new JPanel();
+		phonePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		phonePanel.add(new JLabel("전화번호 : "));
+		phonePanel.add(phone);
 		
-		JPanel pwdPanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JTextField jtf2 = new JTextField(10);
-		pwdPanel2.add(jtf2);
+		JPanel formPanel = new JPanel();
+		formPanel.setLayout(new GridLayout(4, 1));
+		formPanel.add(idPanel);
+		formPanel.add(pwdPanel);
+		formPanel.add(namePanel);
+		formPanel.add(phonePanel);
 		
-		jp.add(pwdPanel1); jp.add(pwdPanel2);
+		// radio + form panel
+		JPanel contentPanel = new JPanel();
+		contentPanel.setLayout(new FlowLayout());
+		contentPanel.add(radioPanel);
+		contentPanel.add(formPanel);
 		
-		// 이름
-		JPanel namePanel1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel jLabel3 = new JLabel("이름 : ", JLabel.CENTER);
-		namePanel1.add(jLabel3);
-
-		JPanel namePanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JTextField jtf3 = new JTextField(10);
-		namePanel2.add(jtf3);
-
-		jp.add(namePanel1);
-		jp.add(namePanel2);
+		// button panel
+		JPanel joinCancelPanel = new JPanel();
+		joinCancelPanel.add(join);
+		joinCancelPanel.add(cancel);
 		
-		// 전화번호
-		JPanel phPanel1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel jLabel4 = new JLabel("전화번호 : ", JLabel.CENTER);
-		phPanel1.add(jLabel4);
-
-		JPanel phPanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JTextField jtf4 = new JTextField(10);
-		phPanel2.add(jtf4);
-
-		jp.add(phPanel1);
-		jp.add(phPanel2);
+		add(title, BorderLayout.NORTH);
+		add(contentPanel, BorderLayout.CENTER);
+		add(joinCancelPanel, BorderLayout.SOUTH);
 		
-		JPanel joinPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JButton jlogin = new JButton("회원가입");
+		setBounds(200, 200, 250, 300);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
 		
-		JPanel cancelPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JButton jcancel = new JButton("취소");
-		
-		joinPanel.add(jlogin);
-		cancelPanel.add(jcancel);
-		
-		jp.add(joinPanel);
-		jp.add(cancelPanel);
-		
-		JPanel jp2 = new JPanel();
-		jp2.setLayout(new FlowLayout());
-		jp2.add(jp);
-		
-		JPanel jp3 = new JPanel(new BorderLayout());
-		jp3.add(jp1, BorderLayout.NORTH);
-		jp3.add(jp2, BorderLayout.CENTER);
+		// 4. 이벤트 처리
+		cancel.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				
-		jf.setLayout(new BorderLayout());
-		jf.add(title, BorderLayout.NORTH);
-		jf.add(jp3, BorderLayout.CENTER);
-	
-		jf.setBounds(200, 200, 300, 350);
-		jf.setResizable(false); 	// 화면 크기 고정
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setVisible(true);
+				new LoginScreen();
+				dispose();
+			}
+		});
+		
+		client.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(client, "고객를(을) 선택했군요.");
+			}
+		});
+		
+		manager.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(manager, "관리자를(을) 선택했군요.");
+			}
+		});
 
+		etc.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(etc, "기타를(을) 선택했군요.");
+			}
+		});
+		
+		join.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String idInfo = id.getText();
+				String pwdInfo = pwd.getText();
+				String nameInfo = name.getText();
+				String phoneInfo = phone.getText();
+				String personInfo = null;
+				
+				if(client.isSelected()) {
+					personInfo = "고객";
+				} else if(manager.isSelected()) {
+					personInfo = "관리자";
+				} else if(etc.isSelected()) {
+					personInfo = "기타";
+				}
+				
+				String result = idInfo+pwdInfo+nameInfo+phoneInfo+personInfo;
+				
+				JOptionPane.showMessageDialog(join, result);
+				
+			}
+		});
+		
 	}
 
 }

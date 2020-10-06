@@ -1,13 +1,14 @@
 package sist;
 
-import java.awt.BorderLayout;
-
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
-public class Ex21_Layout05 {
+public class Ex34_Practice {
 
 	public static void main(String[] args) {
-		
+
+
 		JFrame jf = new JFrame("커피 자판기");
 
 		JPanel jp1 = new JPanel();	// North
@@ -76,6 +77,81 @@ public class Ex21_Layout05 {
 		jf.pack();
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setVisible(true);
+		
+		// 4. 이벤트 처리
+		//계산(jbt1)
+		jbt1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int count = Integer.parseInt(su1.getText());
+				int money = Integer.parseInt(su2.getText());
+
+				String menu = null;
+				int price = 0;
+				
+				if(jrb1.isSelected()) {
+					menu = "아메리카노";
+					price = 2500;
+				} else if(jrb2.isSelected()) {
+					menu = "카페모카";
+					price = 3500;
+				} else if(jrb3.isSelected()) {
+					menu = "에소프레소";
+					price = 2500;
+				} else if(jrb4.isSelected()) {
+					menu = "카페라떼";
+					price = 4000;
+				}
+				
+				int total = price * count;
+				int tax = total / 10;
+				int coffeePrice = total+tax;
+				int change = money - coffeePrice;
+				
+				String result =
+						"커피종류 : "+menu+"\n"+
+						"커피단가 : "+price+"원\n"+		
+						"수      량 : "+count+"\n"+	
+						"공급가액 : "+total+"원\n"+
+						"부가세액 : "+tax+"원\n"+
+						"총 금 액 : "+coffeePrice+"원\n"+
+						"입 금 액 : "+money+"원\n"+
+						"거스름돈 : "+change+"원\n";
+				
+				jta.append(result);
+				
+				// 초기화
+				su1.setText(null); su2.setText(null);
+				bg.clearSelection();
+				
+				su1.requestFocus();
+			}
+		});
+		
+		// 종료(jbt2)
+		jbt2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		// 취소(jbt3)
+		jbt3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// 초기화
+				su1.setText(null); su2.setText(null);
+				jta.setText(null);
+				bg.clearSelection();
+				
+				su1.requestFocus();
+			}
+		});
 		
 	}
 
