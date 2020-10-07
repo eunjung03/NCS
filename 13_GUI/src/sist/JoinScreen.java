@@ -6,6 +6,8 @@ import javax.swing.*;
 
 public class JoinScreen extends JFrame {
 	
+	String choice;
+	
 	public JoinScreen() {
 		super("회원관리 시스템");
 
@@ -85,6 +87,23 @@ public class JoinScreen extends JFrame {
 		setVisible(true);
 		
 		// 4. 이벤트 처리
+		// 회원가입 버튼을 클릭했을 때 이벤트 처리
+		join.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String idInfo = id.getText().toString();
+				String pwdInfo = pwd.getText().toString();
+				String nameInfo = name.getText().toString();
+				String phoneInfo = phone.getText().toString();
+
+				JOptionPane.showMessageDialog(join, 
+						"아이디 : "+idInfo+", 비밀번호 : "+pwdInfo+", 이름 : "+nameInfo
+						+", 전화번호 : "+phoneInfo+", 가입유형 : "+choice);
+			}
+		});
+
+		// 취소 버튼을 클릭했을 때 이벤트 처리
 		cancel.addActionListener(new ActionListener() {
 			
 			@Override
@@ -95,58 +114,38 @@ public class JoinScreen extends JFrame {
 			}
 		});
 		
+		// 고객 라디오 버튼을 클릭했을 때 이벤트 처리
 		client.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				JOptionPane.showMessageDialog(client, "고객를(을) 선택했군요.");
+				choice = client.getText().toString();
+				JOptionPane.showMessageDialog(client, choice+"를(을) 선택했군요.");
 			}
 		});
 		
+		// 관리자 라디오 버튼을 클릭했을 때 이벤트 처리
 		manager.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				JOptionPane.showMessageDialog(manager, "관리자를(을) 선택했군요.");
+				choice = manager.getText().toString();
+				JOptionPane.showMessageDialog(manager, choice+"를(을) 선택했군요.");
 			}
 		});
 
+		// 기타 라디오 버튼을 클릭했을 때 이벤트 처리
 		etc.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				JOptionPane.showMessageDialog(etc, "기타를(을) 선택했군요.");
+				choice = etc.getText().toString();
+				JOptionPane.showMessageDialog(etc, choice+"를(을) 선택했군요.");
 			}
 		});
-		
-		join.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String idInfo = id.getText();
-				String pwdInfo = pwd.getText();
-				String nameInfo = name.getText();
-				String phoneInfo = phone.getText();
-				String personInfo = null;
-				
-				if(client.isSelected()) {
-					personInfo = "고객";
-				} else if(manager.isSelected()) {
-					personInfo = "관리자";
-				} else if(etc.isSelected()) {
-					personInfo = "기타";
-				}
-				
-				String result = idInfo+pwdInfo+nameInfo+phoneInfo+personInfo;
-				
-				JOptionPane.showMessageDialog(join, result);
-				
-			}
-		});
-		
 	}
 
 }

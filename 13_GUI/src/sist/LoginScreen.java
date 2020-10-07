@@ -17,7 +17,7 @@ public class LoginScreen extends JFrame {
 		login.setForeground(new Color(5, 0, 153));
 		
 		//Font font = new Font("휴먼편지체", Font.BOLD, 25);
-		login.setFont(new Font("휴먼편지체 보통", Font.BOLD, 25));
+		login.setFont(new Font("휴먼편지체", Font.BOLD, 25));
 		
 		// 컴포넌트를 컨테이너에 올려주어야 한다.
 		title.add(login);
@@ -89,12 +89,9 @@ public class LoginScreen extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				String idInfo = jtf1.getText();
-				String pwdInfo = jtf2.getText();
-				
-				String loginInfo = "아이디 : "+ idInfo + ", 비번 : "+pwdInfo;
-				
-				JOptionPane.showMessageDialog(jlogin, loginInfo);
+				String idInfo = jtf1.getText().toString(); // 더 정확하게 가져오기 위해 toString().
+				String pwdInfo = jtf2.getText().toString();
+				JOptionPane.showMessageDialog(jlogin, "아이디 : "+ idInfo + ", 비번 : "+pwdInfo);
 			}
 		});
 		
